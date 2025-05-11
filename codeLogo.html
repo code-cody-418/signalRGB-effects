@@ -22,15 +22,29 @@
   var width = 320;
   var height = 200;
   var hue = 0;
-
   function update() {
-    ctx.fillStyle = "hsl(" + hue + ", 100%, 50%)";
+    // background
+    ctx.fillStyle = "black";
     ctx.fillRect(0, 0, width, height);
-    hue += speed / 4;
-    if (hue > 360) {
-      hue = hue % 360;
-    }
-    windows.requestAnimationFrame(update);
+    
+
+    // "<"
+    ctx.fillStyle = "red";
+    ctx.fillRect(45, 30, 10, 10);
+    ctx.fillRect(28, 42, 10, 10);
+    ctx.fillRect(45, 53, 10, 10);
+
+    // "/"
+    ctx.fillRect(103, 30, 10, 10);
+    ctx.fillRect(83, 42, 10, 10);
+    ctx.fillRect(85, 53, 10, 10);
+
+    // ">"
+    ctx.fillRect(138, 30, 10, 10);
+    ctx.fillRect(138, 42, 10, 10);
+    ctx.fillRect(138, 53, 10, 10);
+
+    window.requestAnimationFrame(update);
   }
 
   window.requestAnimationFrame(update);
