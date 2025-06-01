@@ -1,0 +1,54 @@
+<head>
+  <title>Background</title>
+  <meta description="Background Effect" />
+  <meta publisher="Cody" />
+  <meta
+    property="speed"
+    label="Cycle Speed"
+    type="number"
+    min="1"
+    max="10"
+    default="2"
+  />
+</head>
+
+<body style="margin: 0; padding: 0">
+  <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+  var c = document.getElementById("exCanvas");
+  var ctx = c.getContext("2d");
+  var width = 320;
+  var height = 200;
+  var hue = 0;
+  function update() {
+    // background
+    ctx.fillStyle = "#7eaabd";
+    ctx.fillRect(0, 0, width, height);
+
+    var x = 1;
+    var y = 20;
+    var boxWidth = 10;
+    var boxHeight = 10;
+
+    let time = Date.now() / 500;
+
+    
+    // "1"
+    ctx.beginPath();
+    ctx.arc(5, 3 * Math.sin(time) + 25, 6, 0, Math.PI * 2);
+    ctx.fillStyle = "#d9e2e5";
+    ctx.fill();
+
+    // "2"
+    ctx.beginPath();
+    ctx.arc(5, 3 * Math.sin(time) + 10, 6, 0, Math.PI * 2);
+    ctx.fillStyle = "#d9e2e5";
+    ctx.fill();
+
+    window.requestAnimationFrame(update);
+  }
+
+  window.requestAnimationFrame(update);
+</script>
