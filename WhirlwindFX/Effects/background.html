@@ -1,15 +1,8 @@
 <head>
   <title>Background</title>
-  <meta description="Background Effect" />
+  <meta description="Custom effect for ff7 remake background" />
   <meta publisher="Cody" />
-  <meta
-    property="speed"
-    label="Cycle Speed"
-    type="number"
-    min="1"
-    max="10"
-    default="2"
-  />
+  <meta property="speed" label="Cycle Speed" type="number" min="1" max="10" default="2" />
 </head>
 
 <body style="margin: 0; padding: 0">
@@ -24,7 +17,8 @@
   var hue = 0;
   function update() {
     // background
-    ctx.fillStyle = "#7eaabd";
+    ctx.fillStyle = "#3e5a74"
+    // ctx.fillStyle = "#7eaabd";
     ctx.fillRect(0, 0, width, height);
 
     var x = 1;
@@ -32,20 +26,34 @@
     var boxWidth = 10;
     var boxHeight = 10;
 
-    let time = Date.now() / 500;
+    let animationSpeed = Date.now() / 700; // animation speed
+    let yMultiplier = 30
+    let yStart = 100 // where y animation starts
+    let xStart = 0
 
-    
-    // "1"
+    for (let i = 0; i < 3; i++) {
+      xStart += 80
+      // Moons
+      ctx.beginPath();
+      ctx.arc(xStart, yMultiplier * Math.sin(animationSpeed) + yStart, 30, 0, Math.PI * 2);
+      ctx.fillStyle = "#bdcbd5";
+      ctx.fill();
+    }
+
+    xStart = 120
+    // "Cloud"
     ctx.beginPath();
-    ctx.arc(5, 3 * Math.sin(time) + 25, 6, 0, Math.PI * 2);
-    ctx.fillStyle = "#d9e2e5";
+    ctx.arc(xStart, 150, 30, 0, Math.PI * 2);
+    ctx.fillStyle = "#000407";
     ctx.fill();
 
-    // "2"
+    xStart = 200
+    // "Sephiroth"
     ctx.beginPath();
-    ctx.arc(5, 3 * Math.sin(time) + 10, 6, 0, Math.PI * 2);
-    ctx.fillStyle = "#d9e2e5";
+    ctx.arc(xStart, 150, 30, 0, Math.PI * 2);
+    ctx.fillStyle = "#000407";
     ctx.fill();
+
 
     window.requestAnimationFrame(update);
   }
